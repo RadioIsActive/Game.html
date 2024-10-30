@@ -55,7 +55,7 @@
             else if (result === 'You lost.') score.losses++;
             else if (result === 'It\'s a tie.') score.ties++;
         
-            displayMessage(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
+            displayMessage(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}<br>
             Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
         }
         
@@ -65,7 +65,7 @@
         }
 
         function displayMessage(message) {
-            document.getElementById('message-area').textContent = message;
+            document.getElementById('message-area').innerHTML = message;
         }
 
         function resetScore() {
