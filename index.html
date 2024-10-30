@@ -32,6 +32,15 @@
             cursor: pointer;
         }
 
+        .reset-button {
+            background-color: #86BBD8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -53,10 +62,20 @@
     <button class="red-button" onclick="playGame('scissors')">Scissors</button>
     <button class="yellow-button" onclick="playGame('rock')">Rock</button>
     <button class="blue-button" onclick="playGame('paper')">Paper</button>
+    <button class="reset-button" onclick="
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+    ">Reset Score</button>
 
     <p id="message-area"></p>
 
     <script>
+        const.score = {
+            wins = 0,
+            losses = 0,
+            ties = 0
+        };
         function playGame(playerMove) {
             const computerMove = pickComputerMove();
             
@@ -88,7 +107,16 @@
                 }
             }
             
+            if (result === 'You win the game!') {
+                score.wins += 1;
+            } else if (result === 'You lost.') {
+                score.losses += 1;
+            } else if (result === 'It\'s a tie.') {
+                score.ties += 1;
+            }
+            
             displayMessage(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}`);
+            displatMessage('Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}');
         }
 
         function pickComputerMove() {
